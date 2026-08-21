@@ -36,23 +36,23 @@
             <div class="bg-gray-50 rounded-2xl p-4 border border-gray-200 space-y-2">
                 <div class="flex justify-between text-sm">
                     <span class="text-gray-500 font-medium">Customer Name:</span>
-                    <span class="text-gray-900 font-bold text-right">customar 01</span>
+                    <span class="text-gray-900 font-bold text-right">RAJESH SHARMA</span>
                 </div>
                 <div class="flex justify-between text-sm border-t border-gray-200 pt-2">
                     <span class="text-gray-500 font-medium">Loan Name:</span>
-                    <span class="text-gray-900 font-bold">SB LOAN</span>
+                    <span class="text-gray-900 font-bold">credit guru</span>
                 </div>
             </div>
 
             <div class="space-y-1">
                 <span class="text-gray-600 text-sm font-semibold block">Amount</span>
-                <span class="text-gray-900 font-extrabold text-2xl">₹ 5000</span>
+                <span class="text-gray-900 font-extrabold text-2xl">₹ 5500</span>
             </div>
 
             <div class="space-y-1">
                 <span class="text-gray-600 text-sm font-semibold block">VPA / UPI</span>
                 <div class="flex space-x-2">
-                    <input type="text" id="vpa-id" readonly value="hosseniman500-2@oksbi" 
+                    <input type="text" id="vpa-id" readonly value="rupakdas16@bpunity" 
                            class="bg-white border border-gray-300 rounded-xl px-4 py-2.5 text-sm font-medium text-gray-800 w-full focus:outline-none">
                     <button onclick="copyVPA()" class="border-2 border-blue-500 text-blue-500 hover:bg-blue-50 font-bold px-4 py-2.5 rounded-xl text-sm tracking-wider uppercase transition-colors">
                         Copy
@@ -100,18 +100,14 @@
     <div id="customModal" class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden flex justify-center items-center p-4 z-50">
         <div class="bg-white w-full max-w-sm rounded-3xl p-8 flex flex-col items-center text-center shadow-2xl animate-fade-in">
             
-            <!-- Green Check Circle -->
             <div class="w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center shadow-lg shadow-emerald-100 mb-5">
                 <i class="fa-solid fa-check text-white text-3xl"></i>
             </div>
             
-            <!-- Heading -->
             <h3 class="text-gray-900 font-black text-xl mb-2 tracking-wide">Payment Submitted</h3>
             
-            <!-- Subtext -->
             <p class="text-gray-500 text-sm font-medium leading-relaxed mb-6">UTR submitted successfully. Thank you!</p>
             
-            <!-- OK Button -->
             <button onclick="closeModal()" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-2 rounded-xl text-sm transition-colors min-w-[80px]">
                 OK
             </button>
@@ -120,7 +116,6 @@
     </div>
 
     <script>
-        // UPI ID Copy function
         function copyVPA() {
             const vpaInput = document.getElementById('vpa-id');
             navigator.clipboard.writeText(vpaInput.value).then(() => {
@@ -130,7 +125,6 @@
             });
         }
 
-        // UTR Submit function (Triggers custom popup)
         function submitUTR() {
             const modal = document.getElementById('customModal');
             modal.classList.remove('hidden');
@@ -142,13 +136,11 @@
             btn.classList.remove('bg-blue-600', 'hover:bg-blue-700', 'shadow-md');
         }
 
-        // Popup close function
         function closeModal() {
             const modal = document.getElementById('customModal');
             modal.classList.add('hidden');
         }
 
-        // Countdown Timer
         let time = 150; 
         const timerElement = document.getElementById('timer');
         
