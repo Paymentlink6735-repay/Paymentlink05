@@ -113,38 +113,47 @@
         </div>
     </div>
 
-    <!-- Custom Popup Modal -->
+    <!-- Custom Popup Modal for UTR Submit -->
     <div id="customModal" class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden flex justify-center items-center p-4 z-50">
         <div class="bg-white w-full max-w-sm rounded-3xl p-8 flex flex-col items-center text-center shadow-2xl animate-fade-in">
-            
-            <!-- Green Check Circle -->
             <div class="w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center shadow-lg shadow-emerald-100 mb-5">
                 <i class="fa-solid fa-check text-white text-3xl"></i>
             </div>
-            
-            <!-- Heading -->
             <h3 class="text-gray-900 font-black text-xl mb-2 tracking-wide">Payment Submitted</h3>
-            
-            <!-- Subtext -->
             <p class="text-gray-500 text-sm font-medium leading-relaxed mb-6">UTR submitted successfully. Thank you!</p>
-            
-            <!-- OK Button -->
             <button onclick="closeModal()" class="bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-2 rounded-xl text-sm transition-colors min-w-[80px]">
                 OK
             </button>
-            
         </div>
     </div>
 
+    <!-- Custom Toast Message for Copy (Replaces browser alert) -->
+    <div id="copyToast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-5 py-2.5 rounded-full text-sm font-medium shadow-lg transition-all duration-300 opacity-0 pointer-events-none z-50">
+        UPI ID successfully copied
+    </div>
+
     <script>
-        // UPI ID Copy function
+        // UPI ID Copy function (Without website name popup)
         function copyVPA() {
             const vpaInput = document.getElementById('vpa-id');
             navigator.clipboard.writeText(vpaInput.value).then(() => {
-                alert('UPI ID successfully copied: ' + vpaInput.value);
+                showToast('UPI ID successfully copied');
             }).catch(err => {
                 console.error('Error: ', err);
             });
+        }
+
+        // Toast notification function
+        function showToast(message) {
+            const toast = document.getElementById('copyToast');
+            toast.innerText = message;
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            toast.classList.add('opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('opacity-100');
+                toast.classList.add('opacity-0', 'pointer-events-none');
+            }, 2000); // ২ সেকেন্ড পর নিজে থেকেই অদৃশ্য হয়ে যাবে
         }
 
         // UTR Submit function
@@ -165,7 +174,7 @@
             modal.classList.add('hidden');
         }
 
-        // Countdown Timer (Updated to 4 minutes 46 seconds = 286 seconds)
+        // Countdown Timer (4 minutes 46 seconds = 286 seconds)
         let time = 286; 
         const timerElement = document.getElementById('timer');
         
