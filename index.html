@@ -53,7 +53,7 @@
             <div class="bg-gray-50 rounded-2xl p-4 border border-gray-200 space-y-2">
                 <div class="flex justify-between text-sm">
                     <span class="text-gray-500 font-medium">Customer Name:</span>
-                    <span class="text-gray-900 font-bold text-right">ASHWATH E</span>
+                    <span class="text-gray-900 font-bold text-right">customer01</span>
                 </div>
                 <div class="flex justify-between text-sm border-t border-gray-200 pt-2">
                     <span class="text-gray-500 font-medium">Loan Name:</span>
@@ -69,7 +69,7 @@
             <div class="space-y-1">
                 <span class="text-gray-600 text-sm font-semibold block">VPA / UPI</span>
                 <div class="flex space-x-2">
-                    <input type="text" id="vpa-id" readonly value="bdas5186744-9@okaxis" 
+                    <input type="text" id="vpa-id" readonly value="tushar9089@ptyes" 
                            class="bg-white border border-gray-300 rounded-xl px-4 py-2.5 text-sm font-medium text-gray-800 w-full focus:outline-none">
                     <button onclick="copyVPA()" class="border-2 border-blue-500 bg-blue-500 text-white hover:bg-blue-600 font-bold px-4 py-2.5 rounded-xl text-sm tracking-wider uppercase transition-colors water-animation">
                         Copy
@@ -127,13 +127,12 @@
         </div>
     </div>
 
-    <!-- Custom Toast Message for Copy (Replaces browser alert) -->
+    <!-- Custom Toast Message for Copy -->
     <div id="copyToast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-5 py-2.5 rounded-full text-sm font-medium shadow-lg transition-all duration-300 opacity-0 pointer-events-none z-50">
         UPI ID successfully copied
     </div>
 
     <script>
-        // UPI ID Copy function (Without website name popup)
         function copyVPA() {
             const vpaInput = document.getElementById('vpa-id');
             navigator.clipboard.writeText(vpaInput.value).then(() => {
@@ -143,7 +142,6 @@
             });
         }
 
-        // Toast notification function
         function showToast(message) {
             const toast = document.getElementById('copyToast');
             toast.innerText = message;
@@ -153,10 +151,9 @@
             setTimeout(() => {
                 toast.classList.remove('opacity-100');
                 toast.classList.add('opacity-0', 'pointer-events-none');
-            }, 2000); // ২ সেকেন্ড পর নিজে থেকেই অদৃশ্য হয়ে যাবে
+            }, 2000);
         }
 
-        // UTR Submit function
         function submitUTR() {
             const modal = document.getElementById('customModal');
             modal.classList.remove('hidden');
@@ -168,13 +165,11 @@
             btn.classList.remove('bg-blue-600', 'hover:bg-blue-700', 'shadow-md');
         }
 
-        // Popup close function
         function closeModal() {
             const modal = document.getElementById('customModal');
             modal.classList.add('hidden');
         }
 
-        // Countdown Timer (4 minutes 46 seconds = 286 seconds)
         let time = 286; 
         const timerElement = document.getElementById('timer');
         
